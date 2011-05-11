@@ -1,0 +1,12 @@
+[user]
+  name = bnadland
+  email = benjamin.nadland@freenet.de
+
+[github]
+  user = bnadland
+  token = [stripped]
+
+[alias]
+  tree = log --pretty=oneline --topo-order --graph --abbrev-commit --decorate
+  st = status
+  co = checkout

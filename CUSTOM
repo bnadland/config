@@ -1,0 +1,4 @@
+include "arch/i386/conf/GENERIC.MP"
+
+option WS_KERNEL_FG=WSCOL_GREEN
+option WS_KERNEL_BG=WSCOL_BLACK

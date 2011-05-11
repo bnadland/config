@@ -1,0 +1,16 @@
+[ui]
+username = Benjamin Nadland <benjamin.nadland@freenet.de>
+verbose = True
+editor = vim
+
+[alias]
+slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+
+[extensions]
+hgext.convert =
+color =
+graphlog = 
+progress = 
+
+[color]
+diff.inserted = green bold

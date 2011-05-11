@@ -1,0 +1,7 @@
+XTerm*loginShell:true
+XTerm*locale:UTF-8
+XTerm*scrollBar:false
+XTerm*background:black
+XTerm*foreground:green
+XTerm*font: -Misc-Fixed-Medium-R-Normal--18-120-100-100-C-90-ISO10646-1
+XTerm*titeInhibit:true

@@ -1,0 +1,57 @@
+# set username and use it
+set from="benjamin.nadland@freenet.de"
+set use_from=yes
+set envelope_from="yes"
+set realname="Benjamin Nadland"
+
+# use -> as an indicator
+#set arrow_cursor
+
+# sort messages by thread
+set sort=threads
+
+# scroll through messages
+set menu_scroll
+
+# additional messages when reading
+#set pager_index_lines=4
+
+# stay in current message
+set pager_stop=yes
+
+# delete without confirmation
+set delete=yes
+
+# use mailserver directly by mutt
+# uncomment this if opensmtpd doesn't work
+source ~/.muttaccount
+
+# fetch and sort mail by fdm
+macro index G "!newsfetch news.1und1.de -d ~/.mail;fdm -v fetch\r"
+macro pager G "!newsfetch news.1und1.de -d ~/.mail;fdm -v fetch\r"
+
+# use vim for message editing
+set editor=vim
+
+# color configuration
+color hdrdefault green default
+color quoted brightblack default
+color signature green default 
+color status brightblack black
+color indicator brightblack black
+color normal green default
+
+# set gnupg options
+source ~/.muttgnupg
+
+# set mailboxes
+set folder=$HOME/.mail
+#source ~/.muttboxes
+# dynamic mailboxes!
+mailboxes `echo ~/.mail/*`
+set record = =default
+set postponed = =postponed
+
+# set aliases
+set alias_file=~/.muttaliases
+source ~/.muttaliases

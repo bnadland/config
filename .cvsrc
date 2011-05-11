@@ -1,0 +1,5 @@
+#cvs -q -d ssh -d anoncvs@mirror.osn.de:/cvs
+cvs -q
+diff -uNp
+update -Pd
+checkout -P
