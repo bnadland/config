@@ -1,5 +1,12 @@
 "" general configurations
+set nocompatible
 set encoding=utf-8
+
+" activate pathogen
+call pathogen#infect()
+
+" backgrounding tainted buffers allowed
+set hidden
 
 " show incomplete commands
 set showcmd
@@ -7,11 +14,20 @@ set showcmd
 " show line,column,percentage in the lower right
 set ruler
 
+" show tabs
+set list
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,nbsp:.,eol:←
+
+" activate filtype plugin
+filetype plugin on
+
 " search parent directories for tags file
 set tags=tags;
 
 " ignore case in searches
-set ignorecase
+"set ignorecase
+" ignore case in searches if search query is lowercase
+set smartcase
 
 " syntax highlighting
 syntax on
@@ -19,62 +35,43 @@ syntax on
 " set colors
 colorscheme own
 
-" line number toggle
-map <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+" add current file to git
+map <F1> :!git add %<CR> 
+
+" interactive git commit
+map <F2> :!git cm<CR>
+
+" NERDTree plugin
+map <F3> :NERDTreeToggle<CR>
+
+" tagbar plugin
+nmap <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_compact = 1
+let g:tagbar_left = 1
+
+" git update
+map <F5> :!git pull && git push;git st<CR>
+
+" check current file for php syntax errors
+map <F6> :!php -l %<CR>
+
+" execute current file with php
+map <F7> :!php %<CR>
+
+" request syntax group
+map <F8> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " backspace
 set backspace=indent,eol,start
 
-"" taglist plugin (to use on OpenBSD: pkg_add vim-taglist ectags)
-" our ctags command is ectags (exuberant ctags)
-let Tlist_Ctags_Cmd="ectags"
-" use F4 to toggle tags buffer
-map <F4> :TlistToggle<cr>
-vmap <F4> <esc>:TlistToggle<cr>
-imap <F4> <esc>:TlistToggle<cr>
-" Remove extra information and blank lines from the taglist window
-let Tlist_Compart_Format = 1
-" Jump to taglist window on open
-let Tlist_GainFocus_On_ToggleOpen = 1
-" Show tag scope next to the tag name
-let Tlist_Display_Tag_Scope = 1
-" Don't Show the fold indicator column in the taglist window
-let Tlist_Enable_Fold_Column = 0
-
-" set autoindentation & tab options
-" (this breaks Makefiles!)
-set shiftwidth=2
-set softtabstop=2
-set tabstop=8
-set autoindent
-set smartindent
-set smarttab
-set expandtab
-
-" autodetect filetype, load settings and indentation based on filetype
-filetype plugin indent on
-
-" go to next buffer
-map <F3> :next<cr>
-
-"" filetypes
-" c
-autocmd BufRead *.c map <F5> :make<cr>
-autocmd BufRead *.c map <F6> :!make run<cr>
-
-" c++
-autocmd BufRead *.cpp map <F5> :make<cr>
-
-" asm
-autocmd BufRead *.s map <F5> :make<cr>
-autocmd BufRead *.s map <F6> :!make run<cr>
+" set tab options
+" set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " python
-autocmd BufRead *.py map <F5> :!python %<cr>
-
-" dot
-autocmd BufRead *.dot map <F5> :!dot -Txlib %<cr>
-
-" perl
-autocmd BufRead *.pl map <F5> :!perl %<cr>
-autocmd BufRead *.pl map <F6> :!sh -c "perl -c %;perlcritic %"<cr>
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
