@@ -43,12 +43,14 @@ map <F2> :!git cm<CR>
 
 " NERDTree plugin
 map <F3> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
 
 " tagbar plugin
 nmap <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_compact = 1
 let g:tagbar_left = 1
+let g:tagbar_autoclose = 1
 
 " git update
 map <F5> :!git pull && git push;git st<CR>
